@@ -29,7 +29,7 @@ public class Movimiento {
   }
 
   public boolean fueExtraido(LocalDate fecha) {
-    return isExtraccion() && esDeLaFecha(fecha);
+    return !(isExtraccion()) && esDeLaFecha(fecha);
   }
 
   public boolean esDeLaFecha(LocalDate fecha) {
@@ -40,9 +40,13 @@ public class Movimiento {
     return esDeposito;
   }
 
+  //Code Smell- Redundancia de codigo
+  /*
   public boolean isExtraccion() {
     return !esDeposito;
   }
+  
+   */
 
   public void agregateA(Cuenta cuenta) {
     cuenta.setSaldo(calcularValor(cuenta));

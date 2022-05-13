@@ -6,22 +6,36 @@ import dds.monedero.exceptions.MontoNegativoException;
 import dds.monedero.exceptions.SaldoMenorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.LocalDate;
 
 public class MonederoTest {
   private Cuenta cuenta;
+  private Movimiento movimiento;
+ 
+ 
 
   @BeforeEach
   void init() {
     cuenta = new Cuenta();
+    movimiento = new Movimiento(LocalDate.now(),200,true);
+ 
   }
-
+  
+   
   @Test
   void Poner() {
     cuenta.poner(1500);
   }
 
+  @Test
+  void EsDeposito() {
+ assertTrue(movimiento.isDeposito());
+  }
+ 
+   
   @Test
   void PonerMontoNegativo() {
     assertThrows(MontoNegativoException.class, () -> cuenta.poner(-1500));
