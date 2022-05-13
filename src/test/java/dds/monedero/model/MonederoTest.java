@@ -24,10 +24,17 @@ public class MonederoTest {
  
   }
   
-   
+  @Test
+  void ExtraerMonto() {
+    cuenta.setSaldo(1000);
+    cuenta.sacar(200);
+  assertEquals(cuenta.getMontoExtraido(LocalDate.now()),800)
+  }
+  
   @Test
   void Poner() {
     cuenta.poner(1500);
+  assertEquals(cuenta.getMovimiento().stream().count(),1)
   }
 
   @Test
