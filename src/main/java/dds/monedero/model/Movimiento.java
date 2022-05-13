@@ -29,7 +29,7 @@ public class Movimiento {
   }
 
   public boolean fueExtraido(LocalDate fecha) {
-    return !(isExtraccion()) && esDeLaFecha(fecha);
+    return !isExtraccion() && esDeLaFecha(fecha);
   }
 
   public boolean esDeLaFecha(LocalDate fecha) {
